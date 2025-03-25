@@ -1,6 +1,7 @@
-import { defineConfig } from 'wxt';
+import { defineConfig } from "wxt";
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
-  extensionApi: 'chrome',
+  srcDir: "src",
+  extensionApi: "chrome",
 });
