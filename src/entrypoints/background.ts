@@ -1,3 +1,8 @@
 export default defineBackground(() => {
-  console.log("Background script initialized", { id: browser.runtime.id });
+  chrome.action.onClicked.addListener((tab) => {
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ["PiP.js"],
+    });
+  });
 });
