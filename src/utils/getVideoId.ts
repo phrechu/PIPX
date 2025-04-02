@@ -1,3 +1,8 @@
+/**
+ * Gets the ID of the currently playing video element from a list of videos
+ * @param videos - NodeList of HTMLVideoElement to search through
+ * @returns The index of the playing video or undefined if no suitable video is found
+ */
 export function getVideoId(
   videos: NodeListOf<HTMLVideoElement>
 ): number | undefined {
@@ -13,20 +18,16 @@ export function getVideoId(
     // console.log("one muted video found");
     return undefined;
   } else if (videos.length > 1) {
-    const isMuted = Array.from(videos).map((video) => video.muted);
-    const isPaused = Array.from(videos).map((video) => video.paused);
-    const nonMutedCount = isMuted.filter((muted) => !muted).length;
-    const nonPausedCount = isPaused.filter((paused) => !paused).length;
-    // console.log("many videos found");
-    // console.log("isMuted", isMuted);
-    // console.log("isPaused", isPaused);
-    if (nonPausedCount === 1) {
-      // if exactly one video is playing and unmuted
-      const videoId = isPaused.indexOf(false);
-      if (isMuted[videoId] === false) {
-        return videoId;
-      }
-      return undefined;
+    const videoStates = Array.from(videos).map((video) => ({
+      isMuted: video.muted,
+      isPaused: video.paused,
+    }));
+
+    const playingVideos = videoStates.filter((state) => !state.isPaused);
+
+    if (playingVideos.length === 1) {
+      const videoId = videoStates.findIndex((state) => !state.isPaused);
+      return !videoStates[videoId].isMuted ? videoId : undefined;
     }
     return undefined;
   }

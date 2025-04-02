@@ -6,7 +6,7 @@ export default defineConfig({
     name: "PIPX - better PiP experience",
     version: "0.0.1",
     description: "Automatic PiP when switching tabs",
-    permissions: ["scripting"],
+    permissions: ["scripting", "storage", "contextMenus"],
     action: {
       default_icon: {
         "16": "icon/16.png",
@@ -26,8 +26,8 @@ export default defineConfig({
         },
       },
     },
-    manifest_version: 3,
   },
+  manifestVersion: 3,
   srcDir: "src",
   extensionApi: "chrome",
 });
