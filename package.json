@@ -1,5 +1,5 @@
 {
-  "name": "PIPX",
+  "name": "PIPX - better PiP experience",
   "description": "Automatic PiP when switching tabs",
   "private": true,
   "version": "0.0.1",
@@ -18,5 +18,6 @@
     "@types/chrome": "^0.0.280",
     "typescript": "^5.6.3",
     "wxt": "^0.19.29"
-  }
+  },
+  "packageManager": "pnpm@9.15.0+sha1.8bfdb6d72b4d5fdf87d21d27f2bfbe2b21dd2629"
 }
