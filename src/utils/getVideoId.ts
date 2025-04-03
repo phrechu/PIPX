@@ -12,7 +12,7 @@ export function getVideoId(
   } else if (videos.length === 1) {
     // one video
     const video = videos[0];
-    if (!video.muted) {
+    if (!video.muted && video.videoHeight !== 0) {
       return 0;
     }
     // console.log("one muted video found");
@@ -21,13 +21,17 @@ export function getVideoId(
     const videoStates = Array.from(videos).map((video) => ({
       isMuted: video.muted,
       isPaused: video.paused,
+      videoHeight: video.videoHeight,
     }));
 
     const playingVideos = videoStates.filter((state) => !state.isPaused);
 
     if (playingVideos.length === 1) {
       const videoId = videoStates.findIndex((state) => !state.isPaused);
-      return !videoStates[videoId].isMuted ? videoId : undefined;
+      return !videoStates[videoId].isMuted &&
+        videoStates[videoId].videoHeight !== 0
+        ? videoId
+        : undefined;
     }
     return undefined;
   }
