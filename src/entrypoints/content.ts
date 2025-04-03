@@ -91,7 +91,7 @@ export default defineContentScript({
             showNotification("Failed to enter PiP mode", "error");
           }
         } else {
-          showNotification("No playing video found", "warning");
+          showNotification("Can not enter PiP mode", "warning");
         }
       }
     }
