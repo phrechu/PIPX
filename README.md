@@ -26,7 +26,7 @@ _will be soon in chrome web store._
 > [!TIP]
 >
 > 1. The (`Alt+P`) shortcut can be changed on the Chrome Extension Shortcuts settings page: [chrome://extensions/shortcuts](chrome://extensions/shortcuts).
-> 2. To disable toast notifications (enabled by default) click right on the extension icon then click on show notifications.
+> 2. To disable toast notifications (enabled by default) click right on the extension icon then click on Show/Hide notifications.
 
 ## Notifications guide
 
