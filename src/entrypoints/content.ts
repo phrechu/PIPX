@@ -122,7 +122,7 @@ export default defineContentScript({
         };
         color: #1d2125;
         z-index: 999999;
-        font-size:1.3rem;
+        font-size:12px;
         font-family: system-ui, -apple-system, sans-serif;
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         font-weight: 500;
