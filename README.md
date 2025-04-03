@@ -49,6 +49,18 @@ This notification is shown when :
 
 This notification is shown when entering PiP mode encountered an error, check your console for more info and do not hesitate to [file an issue](https://github.com/phrechu/PIPX/issues).
 
+## Roadmap
+
+- [ ] `v0.0.1`
+  - [x] Feat: autoPiP on tab switch.
+  - [x] Feat: Enable PiP by clicking the PIPX icon or using Alt-P shortcut.
+  - [x] Feat: Toast notifications for visual feedback.
+  - [ ] Publish to Chrome Web Store.
+- [ ] `v0.0.2`
+  - [ ] Improve the notifications UI and messages.
+  - [ ] Add video detection for nested browsing contexts (e.g iframe elements / reddit player).
+  - [ ] Automate Publishing new versions.
+
 ## Development
 
 You must use [pnpm](https://pnpm.io/) with this repo.
