@@ -1,5 +1,5 @@
 <p align="center">
- <img src="./src/public/icon/512.png" height="128" alt="Logo">
+ <img src="./.github/assets/512.png" height="128" alt="Logo">
  <h1 align="center">PIPX</h1>
  <p  align="center">Better Picture-in-Picture experience</p>
 </p>
@@ -19,13 +19,13 @@ _will be soon in chrome web store._
 
 ## Features
 
-- Automatic PiP on tab switch
+- Automatic PiP on tab switch.
 - Toast notifications to provide visual feedback to users.
 - Enable PiP using the (`Alt+P`) shortcut or by clicking the extension icon.
 
 > [!TIP]
 >
-> 1. The (`Alt+P`) shortcut can be changed on the Chrome Extension Shortcuts settings page: [chrome://extensions/shortcuts](chrome://extensions/shortcuts)
+> 1. The (`Alt+P`) shortcut can be changed on the Chrome Extension Shortcuts settings page: [chrome://extensions/shortcuts](chrome://extensions/shortcuts).
 > 2. To disable toast notifications (enabled by default) click right on the extension icon then click on show notifications.
 
 ## Development
@@ -52,8 +52,8 @@ This extension is bundled via [WXT](https://wxt.dev).
 pnpm build
 ```
 
-- Go to [chrome://extensions/](chrome://extensions/)
-- Turn on developer mode
-- Click "load unpacked" button
-- Choose the `.output/chrome-mv3/` folder
+- Go to [chrome://extensions/](chrome://extensions/).
+- Turn on developer mode.
+- Click "load unpacked" button.
+- Choose the `.output/chrome-mv3/` folder.
 - Then you will be able to see extension icon in Chrome extension bar.
