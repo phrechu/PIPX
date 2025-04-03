@@ -28,6 +28,27 @@ _will be soon in chrome web store._
 > 1. The (`Alt+P`) shortcut can be changed on the Chrome Extension Shortcuts settings page: [chrome://extensions/shortcuts](chrome://extensions/shortcuts).
 > 2. To disable toast notifications (enabled by default) click right on the extension icon then click on show notifications.
 
+## Notifications guide
+
+#### 1. Entered/Exited PiP mode
+
+This notification is shown when the PiP is successfully enabled/disabled.
+
+It is only shown when using the (`Alt+P`) shortcut or by clicking the extension icon.
+
+#### 2. Can not enter PiP mode
+
+This notification is shown when :
+
+- The video is paused or muted.
+  > to enable PiP make sure the video is playing and is not muted.
+- Many videos are playing and not mute at the same time.
+- No videos were found.
+
+#### 3. Failed to enter PiP mode
+
+This notification is shown when entering PiP mode encountered an error, check your console for more info and do not hesitate to [file an issue](https://github.com/phrechu/PIPX/issues).
+
 ## Development
 
 You must use [pnpm](https://pnpm.io/) with this repo.
