@@ -6,7 +6,7 @@ export default defineConfig({
     name: "PIPX - better PiP experience",
     version: "0.0.1",
     description: "Automatic PiP when switching tabs",
-    permissions: ["scripting", "storage", "contextMenus"],
+    permissions: ["storage", "contextMenus"],
     action: {
       default_icon: {
         "16": "icon/16.png",
