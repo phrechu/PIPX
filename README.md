@@ -2,6 +2,7 @@
  <img src="./.github/assets/512.png" height="128" alt="Logo">
  <h1 align="center">PIPX</h1>
  <p  align="center">Better Picture-in-Picture experience</p>
+[<img align="center" height="72" src="./.github/assets/Chrome-Web-Store-badge.png" alt="Available in the Chrome Web Store">](https://chromewebstore.google.com/detail/nkbikckldmljjiiajklecmgmajgapbfl)
 </p>
 
 ## Description
@@ -12,10 +13,6 @@ A simple Chrome Extension that automatically opens [Picture-in-Picture](https://
 > User Interaction Required for PiP on Tab Switch
 >
 > For security reasons, the browser's Picture-in-Picture API requires explicit user interaction (like a click) with the video element before Automatic PiP can be activated.
-
-## Download
-
-_will be soon in chrome web store._
 
 ## Features
 
@@ -55,7 +52,7 @@ This notification is shown when entering PiP mode encountered an error, check yo
   - [x] Feat: autoPiP on tab switch.
   - [x] Feat: Enable PiP by clicking the PIPX icon or using Alt-P shortcut.
   - [x] Feat: Toast notifications for visual feedback.
-  - [ ] Publish to Chrome Web Store.
+  - [x] Publish to Chrome Web Store.
 - [ ] `v0.0.2`
   - [ ] Improve the notifications UI and messages.
   - [ ] Add video detection for nested browsing contexts (e.g iframe elements / reddit player).
