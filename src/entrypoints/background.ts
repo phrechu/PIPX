@@ -9,7 +9,7 @@ export default defineBackground(() => {
 
   browser.contextMenus.onClicked.addListener((info) => {
     if (info.menuItemId === "toggleNotifications") {
-      browser.storage.sync.set({ showNotifications: info.checked });
+      browser.storage.sync.set({ enableNotifications: info.checked });
     }
   });
 
