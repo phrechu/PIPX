@@ -2,10 +2,10 @@
  <img src="./.github/assets/512.png" height="128" alt="Logo">
  <h1 align="center">PIPX</h1>
  <p  align="center">Better Picture-in-Picture experience</p>
+ <img src="./.github/assets/pipx-thumbnail.png" alt="Thumbnail">
+</p>
 
 [<img height="72" src="./.github/assets/Chrome-Web-Store-badge.png" alt="Available in the Chrome Web Store">](https://chromewebstore.google.com/detail/nkbikckldmljjiiajklecmgmajgapbfl)
-
-</p>
 
 ## Description
 
