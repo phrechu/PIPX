@@ -1,6 +1,7 @@
 import { getVideoId } from "../utils/getVideoId";
 import { enablePiP } from "../utils/enablePiP";
 import { NOTIFICATION_ICONS } from "../utils/notificationIcons";
+import { querySelectorAll } from "kagekiri";
 
 export default defineContentScript({
   matches: ["<all_urls>"],
@@ -24,13 +25,16 @@ export default defineContentScript({
     loadUserPref();
 
     // Handle messages from background script
-    browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    browser.runtime.onMessage.addListener(() => {
       togglePiP();
     });
 
     // Handle visibility changes for auto PiP
     document.addEventListener("visibilitychange", async () => {
-      const videoList = document.querySelectorAll("video");
+      // @ts-ignore
+      const videoList = querySelectorAll(
+        "video"
+      ) as NodeListOf<HTMLVideoElement>;
       const videoId = getVideoId(videoList);
       loadUserPref();
 
@@ -66,7 +70,10 @@ export default defineContentScript({
     });
 
     async function togglePiP(): Promise<void> {
-      const videoList = document.querySelectorAll("video");
+      // @ts-ignore
+      const videoList = querySelectorAll(
+        "video"
+      ) as NodeListOf<HTMLVideoElement>;
       const videoId = getVideoId(videoList);
 
       if (document.pictureInPictureElement) {

@@ -19,5 +19,8 @@
     "typescript": "^5.6.3",
     "wxt": "^0.19.29"
   },
-  "packageManager": "pnpm@9.15.0+sha1.8bfdb6d72b4d5fdf87d21d27f2bfbe2b21dd2629"
+  "packageManager": "pnpm@9.15.0+sha1.8bfdb6d72b4d5fdf87d21d27f2bfbe2b21dd2629",
+  "dependencies": {
+    "kagekiri": "^2.0.0"
+  }
 }
