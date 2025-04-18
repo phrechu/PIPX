@@ -1,5 +1,5 @@
 {
-  "name": "PIPX - better PiP experience",
+  "name": "pipx",
   "description": "Automatic PiP when switching tabs",
   "private": true,
   "version": "0.0.1",
