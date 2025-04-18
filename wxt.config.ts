@@ -4,8 +4,6 @@ import { defineConfig } from "wxt";
 export default defineConfig({
   manifest: {
     name: "PIPX - better PiP experience",
-    version: "0.0.1",
-    description: "Automatic PiP when switching tabs",
     permissions: ["storage", "contextMenus"],
     action: {
       default_icon: {
@@ -29,5 +27,4 @@ export default defineConfig({
   },
   manifestVersion: 3,
   srcDir: "src",
-  extensionApi: "chrome",
 });
