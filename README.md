@@ -50,14 +50,14 @@ This notification is shown when entering PiP mode encountered an error, check yo
 
 ## Roadmap
 
-- [ ] `v0.0.1`
+- [x] `v0.0.1`
   - [x] Feat: autoPiP on tab switch.
   - [x] Feat: Enable PiP by clicking the PIPX icon or using Alt-P shortcut.
   - [x] Feat: Toast notifications for visual feedback.
   - [x] Publish to Chrome Web Store.
 - [ ] `v0.0.2`
   - [ ] Improve the notifications UI and messages.
-  - [ ] Add video detection for nested browsing contexts (e.g iframe elements / reddit player).
+  - [x] Add video detection for nested browsing contexts (e.g iframe elements / reddit player).
   - [ ] Automate Publishing new versions.
 
 ## Development
