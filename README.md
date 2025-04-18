@@ -11,10 +11,10 @@
 
 A simple Chrome Extension that automatically opens [Picture-in-Picture](https://wicg.github.io/picture-in-picture/) when switching tabs or by using the (`Alt+P`) shortcut.
 
-> [!important]
-> User Interaction Required for PiP on Tab Switch
->
-> For security reasons, the browser's Picture-in-Picture API requires explicit user interaction (like a click) with the video element before Automatic PiP can be activated.
+**Important Notes**
+
+- Automatic Picture-in-Picture for embedded videos from different websites may be limited by browser security policies (see the [Limitations](#limitations) section for details).
+- Activating Picture-in-Picture on tab switch might require prior interaction with the video due to browser security requirements (see the [Limitations](#limitations) section for details).
 
 ## Features
 
@@ -26,6 +26,17 @@ A simple Chrome Extension that automatically opens [Picture-in-Picture](https://
 >
 > 1. The (`Alt+P`) shortcut can be changed on the Chrome Extension Shortcuts settings page: [chrome://extensions/shortcuts](chrome://extensions/shortcuts).
 > 2. To disable toast notifications (enabled by default) click right on the extension icon then click on Show/Hide notifications.
+
+## Limitations
+
+> [!important]
+> Detection and automatic Picture-in-Picture (PiP) activation for embedded video elements are subject to the following browser security policies and API requirements.
+
+- **Same-Origin Policy:** This fundamental web security measure prevents JavaScript code running on one domain from directly accessing the content of another domain. Consequently, this extension **cannot directly access** video elements embedded via `<iframe>` elements from different origins (e.g., YouTube, Vimeo, Dailymotion) or within cross-origin Shadow DOMs. This limitation may prevent automatic PiP from working on such embedded videos.
+
+- **User Interaction Requirement for PiP on Tab Switch:** For security reasons, the browser's Picture-in-Picture API generally requires explicit user interaction (like a click) with the video element on the page before programmatic PiP can be initiated, especially when triggered by events like a tab switch. This means that even for same-origin videos, automatic PiP upon switching tabs might not always be possible without prior user interaction with the video.
+
+**In summary, the ability of this extension to automatically detect and activate Picture-in-Picture on video elements is subject to browser security restrictions. Users might need to manually trigger PiP in certain scenarios (through MediaSession interface), particularly for embedded cross-origin videos or when attempting to activate PiP on tab switch without prior interaction.**
 
 ## Notifications guide
 
