@@ -66,10 +66,15 @@ This notification is shown when entering PiP mode encountered an error, check yo
   - [x] Feat: Enable PiP by clicking the PIPX icon or using Alt-P shortcut.
   - [x] Feat: Toast notifications for visual feedback.
   - [x] Publish to Chrome Web Store.
-- [ ] `v0.0.2`
-  - [ ] Improve the notifications UI and messages.
-  - [x] Add video detection for nested browsing contexts (e.g iframe elements / reddit player).
-  - [ ] Automate Publishing new versions.
+- [x] `v0.1.0`
+  - Feat: Add video detection for nested browsing contexts (e.g iframe elements / reddit player).
+  - Docs: Add limitations section to README.
+- [ ] `v0.2.0`
+  - Feat: Automate Publishing new versions.
+- [ ] `v0.3.0`
+  - Feat: Improve the notifications UI and messages.
+- [ ] `v1.0.0`
+  - Release: Mark core functionality as stable and address known limitations.
 
 ## Development
 
