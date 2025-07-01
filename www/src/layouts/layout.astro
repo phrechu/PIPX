@@ -1,0 +1,36 @@
+---
+import Head, { type Props as HeadProps } from '../components/Head.astro'
+import Header from '../components/Header.astro'
+import '../styles/global.css'
+import Footer from '../components/Footer.astro'
+import Noise from '@components/Noise.astro'
+
+type Props = HeadProps
+
+const { ...head } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head {...head} />
+  </head>
+  <body
+    class="mx-auto flex min-h-screen flex-col overflow-x-hidden bg-[var(--dark)] font-sans text-[var(--off-white)] antialiased"
+  >
+    <Header />
+    <slot />
+    <Footer />
+    <Noise />
+    <script>
+      import Lenis from 'lenis'
+      import 'lenis/dist/lenis.css'
+      const lenis = new Lenis({
+        autoRaf: true,
+        anchors: {
+          offset: -100,
+        },
+      })
+    </script>
+  </body>
+</html>

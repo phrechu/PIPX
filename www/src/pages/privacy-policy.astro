@@ -1,0 +1,80 @@
+---
+import Button from '@components/ui/button.astro'
+import Back from '@icons/back.astro'
+import Layout from '../layouts/layout.astro'
+---
+
+<Layout>
+  <div class="container mx-auto my-36 flex w-[60ch] flex-col gap-2">
+    <Button
+      variant="link"
+      size="sm"
+      class="group flex flex-row flex-nowrap items-center justify-start px-0 uppercase"
+      href="./"><Back class="w-4 group-hover:-translate-x-1" />go back</Button
+    >
+    <h1 class="mb-2">Privacy Policy</h1>
+    <div class="mb-12">
+      <p>No data or personal information is collected by PIPX.</p>
+      <p>
+        If you have any questions or suggestions regarding this privacy policy, do not hesitate to <Button
+          variant="link"
+          class="p-0 text-base"
+          href="https://github.com/phrechu/PIPX/issues">file an issue</Button
+        >.
+      </p>
+    </div>
+
+    <h2>Permissions needed</h2>
+    <h3>Scripting</h3>
+
+    <p>
+      The extension needs scripting permission to detect video elements on web pages and control
+      their Picture-in-Picture functionality. This permission allows the content script to find
+      active videos, handle visibility changes, and toggle PiP mode when users switch tabs or click
+      the extension icon.
+    </p>
+
+    <h3>Storage</h3>
+
+    <p>
+      Storage permission is required to save user preferences, specifically whether notifications
+      should be displayed. The extension uses browser.storage.sync to store and retrieve this
+      setting, allowing the user's preference to persist across browser sessions.
+    </p>
+
+    <h3>ContextMenus</h3>
+
+    <p>
+      The extension creates a context menu item that allows users to toggle notification visibility.
+      This menu appears when users right-click the extension icon in the toolbar, providing a
+      convenient way to customize the extension's behavior without opening a separate options page.
+    </p>
+
+    <h3>Host Permission</h3>
+    <p>
+      The extension needs to run on all websites where videos might be played (all_urls) because the
+      Picture-in-Picture functionality must work across any site with video content. This broad
+      permission is necessary to ensure the extension can detect and control video playback when
+      users switch between tabs on any website.
+    </p>
+  </div>
+</Layout>
+
+<style>
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: -0.6rem;
+  }
+  p {
+    margin: 0.4rem 0;
+  }
+</style>

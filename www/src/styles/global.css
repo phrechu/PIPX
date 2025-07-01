@@ -1,1 +1,15 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Vina+Sans&display=swap');
+@import 'tailwindcss';
+
+* {
+  --lime: oklch(0.95 0.18 119.26);
+  --dark-green: oklch(0.31 0.05 118.52);
+  --light-green: oklch(0.92 0.12 123.94);
+  --off-white: oklch(0.97 0.01 81.8);
+  --off-black: oklch(0.26 0 0);
+  --dark: oklch(0.2 0 264.47);
+}
+
+@theme {
+  --font-VinaSans: 'Vina Sans';
+}

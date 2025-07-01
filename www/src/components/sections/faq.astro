@@ -1,0 +1,60 @@
+---
+import Accordion from '@components/ui/accordion/accordion.astro'
+import AccordionContent from '@components/ui/accordion/AccordionContent.astro'
+import AccordionItem from '@components/ui/accordion/accordionItem.astro'
+import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
+---
+
+<section id="faq" class="container mx-auto flex flex-col items-center gap-2 py-16">
+  <h2 class="text-center text-sm font-bold uppercase tracking-wider text-[var(--text-secondary)]">
+    frequently asked questions
+  </h2>
+  <Accordion class="mx-auto mt-4 w-full max-w-3xl p-4">
+    <AccordionItem>
+      <AccordionTrigger slot="trigger">Can I use my own keyboard shortcut?</AccordionTrigger>
+      <AccordionContent slot="content">
+        Just head to <span class="font-semibold">chrome://extensions/shortcuts</span> to set your own
+        key combo.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem>
+      <AccordionTrigger slot="trigger">How do I turn off the notifications?</AccordionTrigger>
+      <AccordionContent slot="content"
+        >Right-click the PIPX icon (make sure it’s pinned), then uncheck “Show/Hide Notifications”.</AccordionContent
+      >
+    </AccordionItem>
+    <AccordionItem>
+      <AccordionTrigger slot="trigger">Can I use PIPX on other browsers?</AccordionTrigger>
+      <AccordionContent slot="content"
+        >PIPX is built for Chromium browsers.<br />Some browser already handle tab-switching PiP
+        natively. in those cases, just use the built-in version for best results.</AccordionContent
+      >
+    </AccordionItem>
+    <AccordionItem>
+      <AccordionTrigger slot="trigger">Why isn't PIPX working?</AccordionTrigger>
+      <AccordionContent slot="content">
+        <span>
+          A few things to double-check
+          <ul class="list-disc pl-8">
+            <li>Did you reload the page after installing the extension?</li>
+            <li>Is the video playing (not paused or muted)?</li>
+            <li>Is there only one video playing at once?</li>
+            <li>Are Chrome’s security policies blocking PiP?</li>
+          </ul>
+        </span>
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem>
+      <AccordionTrigger slot="trigger">Why is Chrome blocking PiP on some sites?</AccordionTrigger>
+      <AccordionContent slot="content">
+        <ul class="list-disc pl-8">
+          <li>Chrome blocks PiP for embedded videos from different origins (a security thing).</li>
+          <li>
+            Tab-switching PiP might need you to interact with the page first. Just click once
+            anywhere on the site.
+          </li>
+        </ul>
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</section>

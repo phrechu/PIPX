@@ -1,0 +1,54 @@
+---
+import Button from '@components/ui/button.astro'
+import Chrome from '@icons/chrome.astro'
+import Logo from 'public/logo.astro'
+import { SiteName } from 'src/consts'
+---
+
+<header class="sticky top-0 z-50 mx-auto text-[var(--secondary)]">
+  <nav
+    class="sm:w-3xl border-[var(--lime)]/30 bg-[var(--lime)]/20 mt-2 flex w-full min-w-fit flex-row flex-nowrap items-center justify-between rounded-full border-2 px-7 py-4 shadow-lg shadow-lime-900/50 backdrop-blur-md sm:pl-7 sm:pr-6"
+  >
+    <a
+      href="/"
+      class="mr-0 flex flex-row flex-nowrap items-center gap-2 focus-visible:shadow-[unset] focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-white sm:mr-8"
+      id="site_title"
+    >
+      <Logo class="aspect-square w-8" />
+      <span class="text-md font-bold">
+        {SiteName}
+      </span>
+    </a>
+    <div class="flex flex-row items-center gap-3 text-xl font-medium sm:gap-8">
+      <Button
+        size="lg"
+        variant="link"
+        href="#features"
+        rounded="none"
+        class="hover:text-shadow-[0_0_2rem_var(--lime)] hidden px-0 md:inline-flex">Features</Button
+      >
+      <Button
+        size="lg"
+        variant="link"
+        href="#faq"
+        rounded="none"
+        class="hover:text-shadow-[0_0_2rem_var(--lime)] hidden px-0 md:inline-flex">FAQ</Button
+      >
+      <Button
+        size="lg"
+        variant="link"
+        rounded="none"
+        class="hover:text-shadow-[0_0_2rem_var(--lime)] hidden px-0 md:inline-flex"
+        href="https://github.com/phrechu/pipx"
+        isBlank>Github</Button
+      >
+      <Button
+        id="cta"
+        href="https://chromewebstore.google.com/detail/nkbikckldmljjiiajklecmgmajgapbfl"
+        isBlank
+        class="hidden ring-2 ring-[var(--lime)] md:inline-flex"
+        ><Chrome class="aspect-square w-6 fill-current font-[var(--lime)]" />Get PIP</Button
+      >
+    </div>
+  </nav>
+</header>

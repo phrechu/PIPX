@@ -1,0 +1,133 @@
+---
+import type { ImageMetadata } from 'astro'
+type Image = {
+  src: string | ImageMetadata
+  alt: string
+}
+
+type SEOMetadata = {
+  name: string
+  title: string
+  description: string
+  image?: Image | undefined
+  canonicalURL?: URL | string | undefined
+  locale?: string
+}
+
+type OpenGraph = Partial<SEOMetadata> & {
+  type?: string
+}
+
+type Twitter = Partial<SEOMetadata> & {
+  handle?: string
+  card?: 'summary' | 'summary_large_image'
+}
+
+export type Props = SEOMetadata & {
+  og?: OpenGraph
+  twitter?: Twitter
+}
+
+const { name, title, description, image, locale = 'en', canonicalURL } = Astro.props
+
+const og = {
+  name,
+  title,
+  description,
+  canonicalURL,
+  image,
+  locale,
+  type: 'website',
+  ...(Astro.props.og ?? {}),
+} satisfies OpenGraph
+
+const twitter = {
+  name,
+  title,
+  description,
+  canonicalURL,
+  image,
+  locale,
+  card: 'summary_large_image',
+  ...Astro.props.twitter,
+}
+
+function normalizeImageUrl(image: string | ImageMetadata) {
+  return typeof image === 'string' ? image : canonicalURL + image.src
+}
+---
+
+<!-- Page Metadata -->
+<link rel="canonical" href={canonicalURL} />
+<meta name="description" content={description} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<title>{name} - {title}</title>
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content={og.title} />
+<meta property="og:type" content={og.type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:locale" content={og.locale} />
+<meta property="og:description" content={og.description} />
+<meta property="og:site_name" content={og.name} />
+{og.image && <meta property="og:image" content={normalizeImageUrl(og.image.src)} />}
+{og.image && <meta property="og:image:alt" content={og.image.alt} />}
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content={twitter.card} />
+<meta name="twitter:site" content={twitter.name} />
+<meta name="twitter:title" content={twitter.title} />
+<meta name="twitter:description" content={twitter.description} />
+{twitter.image && <meta name="twitter:image" content={normalizeImageUrl(twitter.image.src)} />}
+{twitter.image && <meta name="twitter:image:alt" content={twitter.image.alt} />}
+
+<!-- faq -->
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I use my own keyboard shortcut?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Just head to chrome://extensions/shortcuts to set your own key combo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I turn off the notifications?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Right-click the PIPX icon (make sure it’s pinned), then uncheck 'Show/Hide Notifications'."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use PIPX on other browsers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PIPX is built for Chromium browsers. Some browsers already handle tab-switching PiP natively. In those cases, just use the built-in version for best results."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why isn't PIPX working?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A few things to double-check: 1) Did you reload the page after installing the extension? 2) Is the video playing (not paused or muted)? 3) Is there only one video playing at once? 4) Are Chrome’s security policies blocking PiP?"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is Chrome blocking PiP on some sites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Chrome blocks PiP for embedded videos from different origins due to security restrictions. Tab-switching PiP may also require you to click once on the page to activate it."
+        }
+      }
+    ]
+  }
+</script>

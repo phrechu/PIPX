@@ -1,0 +1,90 @@
+---
+import Bell from '@icons/bell.astro'
+import Pip from '@icons/pip.astro'
+import Settings from '@icons/settings.astro'
+
+const features = [
+  {
+    icon: Pip,
+    title: 'Auto-Open PiP on tab switch',
+    description:
+      'Switch tabs, and your video follows automatically. No clicks. No lag. Just smooth, uninterrupted playback.',
+    position: 'left',
+    url: './media/autopip.webm',
+  },
+  {
+    icon: Settings,
+    title: 'Custumizable Shortcut',
+    description: 'Use your own keyboard shortcut to trigger PiP. Skip the mouse hunt.',
+    position: 'right',
+    url: './media/short.webm',
+  },
+  {
+    icon: Bell,
+    title: 'Notification Toasts',
+    description: 'Subtle notifications let you know when PiP starts.',
+    position: 'left',
+    url: './media/popups.webm',
+  },
+]
+---
+
+<section id="features" class="container mx-auto flex flex-col items-center gap-16 px-4">
+  <div class="text-center">
+    <h2 class="text-sm font-bold uppercase tracking-wider text-[var(--text-secondary)]">
+      Features
+    </h2>
+    <span
+      class="mt-2 text-3xl font-extrabold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+    >
+      Seamless Video. Smarter Controls.
+    </span>
+    <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-secondary)]">
+      PIPX improves Picture-in-Picture the way you wish browsers did by default.
+    </p>
+  </div>
+
+  <div class="flex max-w-full flex-col items-center gap-28 sm:gap-40">
+    {
+      features.map(feature => {
+        const { icon: Icon, title, description, position, url } = feature
+        const isRight = position === 'right'
+
+        return (
+          <div
+            class:list={[
+              'flex w-full flex-col items-center gap-2 md:gap-6 lg:gap-12',
+              isRight ? 'md:flex-row-reverse' : 'md:flex-row',
+            ]}
+          >
+            <div
+              class:list={[
+                'flex w-full max-w-[90%] flex-col justify-center py-4 text-left',
+                isRight ? 'items-start' : 'md:items-end',
+              ]}
+            >
+              <div class="items-start">
+                <div class="border-3 aspect-square w-11 content-end justify-items-end rounded-lg p-0.5 text-[var(--lime)]">
+                  <Icon class="w-6" />
+                </div>
+                <h3 class="mb-5 mt-2 text-3xl font-bold text-[var(--lime)]">{title}</h3>
+                <p class="w-full max-w-[30ch] text-pretty text-xl">{description}</p>
+              </div>
+            </div>
+            <div class="w-full px-2 sm:px-0">
+              <video
+                autoplay
+                muted
+                loop
+                disablepictureinpicture
+                playsinline
+                src={url}
+                class="w-full rounded-lg object-cover shadow-2xl shadow-lime-800/50"
+              />
+            </div>
+          </div>
+        )
+      })
+    }
+  </div>
+</section>

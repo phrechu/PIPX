@@ -1,20 +1,19 @@
 ---
-import "../styles/global.css";
+import Cta from '@components/sections/cta.astro'
+import Faq from '@components/sections/faq.astro'
+import Features from '@components/sections/features.astro'
+import Hero from '@components/sections/hero.astro'
+import Thumbnail from '@components/sections/Thumbnail.astro'
+import Layout from '../layouts/layout.astro'
+import '../styles/global.css'
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1
-      class="grid h-screen place-items-center content-center bg-green-300 font-bold"
-    >
-      Astro 1
-    </h1>
-  </body>
-</html>
+<Layout>
+  <main class="mx-auto -mt-24 flex flex-col items-center gap-40">
+    <Hero />
+    <Thumbnail />
+    <Features />
+    <Faq />
+    <Cta />
+  </main>
+</Layout>

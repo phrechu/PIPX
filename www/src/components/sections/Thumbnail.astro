@@ -1,0 +1,33 @@
+---
+
+---
+
+<section id="thumbnail" class="container -mt-20 aspect-auto px-2 sm:px-24">
+  <div class="hover: relative max-w-fit">
+    <video
+      id="video-thumbnail"
+      autoplay
+      muted
+      loop
+      disablepictureinpicture
+      playsinline
+      src="./media/autopip.webm"
+      class="w-full rounded-xl object-cover shadow-2xl shadow-lime-800/50"></video>
+
+    <!-- <button
+      id="play"
+      class="bg-[var(--lime)]/20 right-25 border-1 absolute bottom-12 rounded-full border-white/10 p-3 backdrop-blur-sm"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="inherit"
+        ><path d="M7 6v12l10-6z"></path></svg
+      >
+    </button>
+    <script>
+      const button = document.getElementById('play')
+      button?.addEventListener('click', () => {
+        const videoEl: HTMLVideoElement = document.getElementById('video-thumbnail')
+        videoEl?.paused ? videoEl?.play() : videoEl?.pause()
+      })
+    </script> -->
+  </div>
+</section>

@@ -1,16 +1,16 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
+  "include": [".astro/types.d.ts", "**/*", "prettier.config.js"],
   "exclude": ["dist"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@icons/*": ["src/assets/icons/*"],
+      "@/*": ["./src/*"]
     },
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
     "verbatimModuleSyntax": true
   }
 }

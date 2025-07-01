@@ -1,0 +1,11 @@
+---
+import { cn } from '@/lib/utils'
+interface Props {
+  class?: string
+}
+const { class: className, ...attrs } = Astro.props
+---
+
+<div class:list={cn('w-full max-w-[65ch] px-4 pb-4 text-xl', className)} {...attrs}>
+  <slot />
+</div>
