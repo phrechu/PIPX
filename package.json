@@ -16,11 +16,14 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.280",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.12",
     "typescript": "^5.6.3",
     "wxt": "^0.19.29"
   },
-  "packageManager": "pnpm@9.15.0+sha1.8bfdb6d72b4d5fdf87d21d27f2bfbe2b21dd2629",
   "dependencies": {
     "kagekiri": "^2.0.0"
-  }
+  },
+  "packageManager": "pnpm@10.8.1"
 }
