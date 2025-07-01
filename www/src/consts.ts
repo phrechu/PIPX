@@ -1,4 +1,4 @@
-export const SiteURL = import.meta.env.PUBLIC_SITE_URL || 'http://localhost:4321'
+export const SiteURL = import.meta.env.SITE || 'http://localhost:4321'
 export const SiteName = 'PIPX'
 export const SiteTitle = 'Take Control of Picture-in-Picture'
 export const SiteDescription =

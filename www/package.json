@@ -25,6 +25,7 @@
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",
     "cssnano": "^7.0.7",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "vite": "^7.0.0"
   }
 }
