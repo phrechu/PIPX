@@ -5,11 +5,11 @@ import AccordionItem from '@components/ui/accordion/accordionItem.astro'
 import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
 ---
 
-<section id="faq" class="container mx-auto flex flex-col items-center gap-2 py-16">
-  <h2 class="text-center text-sm font-bold uppercase tracking-wider text-[var(--text-secondary)]">
+<section id="faq" class="container mx-auto flex flex-col items-center">
+  <h2 class="pb-2 text-center text-sm font-bold uppercase tracking-wider">
     frequently asked questions
   </h2>
-  <Accordion class="mx-auto mt-4 w-full max-w-3xl p-4">
+  <Accordion class="w-full max-w-3xl p-4 pt-4">
     <AccordionItem>
       <AccordionTrigger slot="trigger">Can I use my own keyboard shortcut?</AccordionTrigger>
       <AccordionContent slot="content">

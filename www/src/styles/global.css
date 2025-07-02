@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Vina+Sans&display=swap');
 @import 'tailwindcss';
 
 * {
@@ -11,5 +10,10 @@
 }
 
 @theme {
-  --font-VinaSans: 'Vina Sans';
+  --font-VinaSans: 'Vina Sans', sans-serif;
+}
+
+@font-face {
+  font-family: Vina Sans;
+  src: url(../assets/fonts/VinaSans-Regular.ttf) format('ttf');
 }

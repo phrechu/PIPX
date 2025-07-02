@@ -4,41 +4,46 @@ import Logo from 'public/logo.astro'
 import Button from './ui/button.astro'
 ---
 
-<footer
-  class="mt-26 container mx-auto mb-12 flex w-[90%] flex-col items-center gap-12 rounded-xl bg-[var(--off-black)] pb-4 text-[var(--off-white)] sm:gap-40"
->
-  <div class="-my-12 mx-auto flex flex-col items-center gap-4">
-    <Logo class="w-24" />
-  </div>
-  <div class="text-md flex flex-col px-6 sm:w-full sm:flex-row sm:justify-between">
-    <div>
-      &copy;{currentYear} PIPX - Made with love by
-      <Button
-        variant="link"
-        class="px-0"
-        rounded="none"
-        size="md"
-        href="https://phrechu.com"
-        isBlank>Phrechu</Button
-      >
-    </div>
-    <div class="flex flex-col text-center sm:flex-row sm:gap-4">
-      <Button
-        variant="link"
-        class="px-0"
-        rounded="none"
-        size="md"
-        href="https://github.com/phrechu/pipx"
-        isBlank>Github</Button
-      >
-      <Button
-        variant="link"
-        class="px-0"
-        rounded="none"
-        size="md"
-        href="/privacy-policy"
-        data-astro-prefetch>Privacy Policy</Button
-      >
+<footer class="mt-26 container mx-auto p-4">
+  <div
+    class="flex flex-col items-center gap-12 rounded-xl bg-[var(--off-black)] px-8 pb-4 text-[var(--off-white)] sm:gap-40"
+  >
+    <Logo class="-my-12 mx-auto w-24 pb-4" />
+
+    <div class="text-md flex flex-col-reverse gap-12 sm:w-full sm:flex-row sm:justify-between">
+      <div class="text-center sm:text-start">
+        <span>
+          &copy;{currentYear} PIPX
+          <br /> Made with ♥️ by
+        </span>
+        <Button
+          variant="link"
+          class="px-0"
+          rounded="none"
+          size="md"
+          href="https://phrechu.com"
+          isBlank>Phrechu</Button
+        >
+      </div>
+
+      <div class="flex flex-col text-center sm:flex-row sm:gap-4">
+        <Button
+          variant="link"
+          class="px-0"
+          rounded="none"
+          size="md"
+          href="https://github.com/phrechu/pipx"
+          isBlank>Github</Button
+        >
+        <Button
+          variant="link"
+          class="px-0"
+          rounded="none"
+          size="md"
+          href="/privacy-policy"
+          data-astro-prefetch>Privacy Policy</Button
+        >
+      </div>
     </div>
   </div>
 </footer>

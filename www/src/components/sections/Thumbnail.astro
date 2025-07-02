@@ -1,33 +1,17 @@
----
-
----
-
-<section id="thumbnail" class="container -mt-20 aspect-auto px-2 sm:px-24">
-  <div class="hover: relative max-w-fit">
+<section id="thumbnail" class="container mx-auto flex justify-center px-8">
+  <div
+    class="sm:w-6xl aspect-[16/9] w-full overflow-hidden rounded-lg bg-[var(--light-green)] shadow-2xl shadow-lime-800/50"
+  >
     <video
       id="video-thumbnail"
       autoplay
       muted
       loop
+      preload="none"
       disablepictureinpicture
       playsinline
-      src="./media/autopip.webm"
-      class="w-full rounded-xl object-cover shadow-2xl shadow-lime-800/50"></video>
-
-    <!-- <button
-      id="play"
-      class="bg-[var(--lime)]/20 right-25 border-1 absolute bottom-12 rounded-full border-white/10 p-3 backdrop-blur-sm"
+      poster="./media/autopip.webp"
+      class="w-full object-cover"><source src="./media/autopip.webm" type="video/webm" /></video
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="inherit"
-        ><path d="M7 6v12l10-6z"></path></svg
-      >
-    </button>
-    <script>
-      const button = document.getElementById('play')
-      button?.addEventListener('click', () => {
-        const videoEl: HTMLVideoElement = document.getElementById('video-thumbnail')
-        videoEl?.paused ? videoEl?.play() : videoEl?.pause()
-      })
-    </script> -->
   </div>
 </section>

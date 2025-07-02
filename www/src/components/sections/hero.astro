@@ -8,18 +8,18 @@ import Happy from '@icons/happy.astro'
 
 <section
   id="hero"
-  class="pt-auto bg-gradient relative flex h-full w-screen flex-col items-center justify-center gap-4"
+  class="max-w-screen container flex flex-col items-center justify-center gap-4 px-8 pt-48"
 >
-  <h1 class="font-VinaSans container max-w-[90%] pt-48 text-center text-5xl sm:text-7xl">
+  <h1 class="font-VinaSans text-center text-5xl sm:text-7xl">
     Take Control of Picture-in-Picture.
   </h1>
-  <p class="w-[45ch] max-w-[90%] text-pretty text-center text-xl">
+  <p class="max-w-[45ch] text-center text-xl">
     never miss a moment.<br />built for multitaskers and binge-watchers.
   </p>
-  <div class="flex flex-row flex-nowrap items-center pt-8">
+  <div class="flex flex-row flex-nowrap items-center gap-4 pt-8">
     <Button
       href="https://chromewebstore.google.com/detail/nkbikckldmljjiiajklecmgmajgapbfl"
-      class="ring-2 ring-[var(--lime)]"
+      class="border-2 border-[var(--lime)]"
       isBlank
     >
       <Chrome
@@ -28,13 +28,13 @@ import Happy from '@icons/happy.astro'
     >
     <Button
       variant="link"
-      size="md"
+      size="lg"
       class="hover:text-shadow-[0_0_2rem_var(--lime)]"
       href="https://github.com/phrechu/pipx"
       isBlank>Github</Button
     >
   </div>
-  <div class="mx-4 mb-12 mt-8 text-lime-100">
+  <div class="mx-4 mt-8 text-lime-100">
     <ul class="grid w-full max-w-max grid-cols-3 gap-6 text-center text-xs">
       <li class="flex flex-col items-center justify-center gap-1">
         <Gift class="w-5" /><span> Free &<br />open-source</span>
