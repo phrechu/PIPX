@@ -11,12 +11,29 @@ import Happy from '@icons/happy.astro'
   class="max-w-screen container flex flex-col items-center justify-center gap-4 px-8 pt-48"
 >
   <h1 class="font-VinaSans text-center text-5xl sm:text-7xl">
-    Take Control of Picture-in-Picture.
+    {
+      'Take Control of Picture-in-Picture.'
+        .split('')
+        .map(char => <span class="use-motion-text opacity-0">{char}</span>)
+    }
   </h1>
-  <p class="max-w-[45ch] text-center text-xl">
-    never miss a moment.<br />built for multitaskers and binge-watchers.
-  </p>
-  <div class="flex flex-row flex-nowrap items-center gap-4 pt-8">
+  <div class="max-w-[45ch] text-center text-xl">
+    <p id="a">
+      {
+        'never miss a moment.'
+          .split('')
+          .map(char => <span class="use-motion-text opacity-0">{char}</span>)
+      }
+    </p>
+    <p id="b">
+      {
+        'built for multitaskers and binge-watchers.'
+          .split('')
+          .map(char => <span class="use-motion-text opacity-0">{char}</span>)
+      }
+    </p>
+  </div>
+  <div class="use-motion flex flex-row flex-nowrap items-center gap-4 pt-8 opacity-25">
     <Button
       href="https://chromewebstore.google.com/detail/nkbikckldmljjiiajklecmgmajgapbfl"
       class="border-2 border-[var(--lime)]"
@@ -34,7 +51,7 @@ import Happy from '@icons/happy.astro'
       isBlank>Github</Button
     >
   </div>
-  <div class="mx-4 mt-8 text-lime-100">
+  <div class="use-motion mx-4 mt-8 text-lime-100 opacity-25">
     <ul class="grid w-full max-w-max grid-cols-3 gap-6 text-center text-xs">
       <li class="flex flex-col items-center justify-center gap-1">
         <Gift class="w-5" /><span> Free &<br />open-source</span>
@@ -47,4 +64,44 @@ import Happy from '@icons/happy.astro'
       </li>
     </ul>
   </div>
+  <script>
+    import { animate, inView, stagger } from 'motion'
+    animate(
+      'h1 .use-motion-text',
+      { opacity: 1 },
+      {
+        duration: 1.5,
+        ease: 'easeInOut',
+        delay: stagger(0.01, { startDelay: 0.2 }),
+      }
+    )
+    animate(
+      '#b .use-motion-text',
+      { opacity: 1 },
+      {
+        duration: 1.5,
+        ease: 'easeOut',
+        delay: stagger(0.01, { startDelay: 0.8 }),
+      }
+    )
+    animate(
+      '#a .use-motion-text',
+      { opacity: 1 },
+      {
+        duration: 1.5,
+        ease: 'easeOut',
+        delay: stagger(0.01, { startDelay: 0.6 }),
+      }
+    )
+    inView('h1, p', element => {
+      animate(
+        element,
+        { y: [25, 0] },
+        {
+          y: { duration: 1.2 },
+          ease: 'easeIn',
+        }
+      )
+    })
+  </script>
 </section>

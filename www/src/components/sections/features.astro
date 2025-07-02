@@ -33,7 +33,7 @@ const features = [
 ---
 
 <section id="features" class="container mx-auto flex flex-col items-center px-8">
-  <div class="pb-16 text-center">
+  <div class="use-motion pb-16 text-center opacity-25">
     <h2 class="text-sm font-bold uppercase tracking-wider">Features</h2>
     <span class="text-3xl font-extrabold sm:text-4xl"> Seamless Video. Smarter Controls. </span>
     <p class="mx-auto pt-4 text-lg">
@@ -50,7 +50,7 @@ const features = [
         return (
           <div
             class:list={[
-              'flex w-full flex-col items-center gap-2 md:gap-6 lg:gap-12',
+              'use-motion flex w-full flex-col items-center gap-2 opacity-25 md:gap-6 lg:gap-12',
               isRight ? 'md:flex-row-reverse' : 'md:flex-row',
             ]}
           >

@@ -25,11 +25,26 @@ const { ...head } = Astro.props
     <script>
       import Lenis from 'lenis'
       import 'lenis/dist/lenis.css'
+
       const lenis = new Lenis({
         autoRaf: true,
         anchors: {
           offset: -100,
         },
+      })
+    </script>
+    <script>
+      import { animate, inView } from 'motion'
+      inView('.use-motion', element => {
+        animate(
+          element,
+          { opacity: 1, y: [25, 0] },
+          {
+            duration: 1.5,
+            y: { duration: 1.2 },
+            ease: 'easeIn',
+          }
+        )
       })
     </script>
   </body>

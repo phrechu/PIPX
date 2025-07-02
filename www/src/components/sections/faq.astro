@@ -6,31 +6,31 @@ import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
 ---
 
 <section id="faq" class="container mx-auto flex flex-col items-center">
-  <h2 class="pb-2 text-center text-sm font-bold uppercase tracking-wider">
+  <h2 class="use-motion pb-2 text-center text-sm font-bold uppercase tracking-wider opacity-25">
     frequently asked questions
   </h2>
   <Accordion class="w-full max-w-3xl p-4 pt-4">
-    <AccordionItem>
+    <AccordionItem class="use-motion opacity-25">
       <AccordionTrigger slot="trigger">Can I use my own keyboard shortcut?</AccordionTrigger>
       <AccordionContent slot="content">
         Just head to <span class="font-semibold">chrome://extensions/shortcuts</span> to set your own
         key combo.
       </AccordionContent>
     </AccordionItem>
-    <AccordionItem>
+    <AccordionItem class="use-motion opacity-25">
       <AccordionTrigger slot="trigger">How do I turn off the notifications?</AccordionTrigger>
       <AccordionContent slot="content"
         >Right-click the PIPX icon (make sure it’s pinned), then uncheck “Show/Hide Notifications”.</AccordionContent
       >
     </AccordionItem>
-    <AccordionItem>
+    <AccordionItem class="use-motion opacity-25">
       <AccordionTrigger slot="trigger">Can I use PIPX on other browsers?</AccordionTrigger>
       <AccordionContent slot="content"
         >PIPX is built for Chromium browsers.<br />Some browser already handle tab-switching PiP
         natively. in those cases, just use the built-in version for best results.</AccordionContent
       >
     </AccordionItem>
-    <AccordionItem>
+    <AccordionItem class="use-motion opacity-25">
       <AccordionTrigger slot="trigger">Why isn't PIPX working?</AccordionTrigger>
       <AccordionContent slot="content">
         <span>
@@ -44,7 +44,7 @@ import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
         </span>
       </AccordionContent>
     </AccordionItem>
-    <AccordionItem>
+    <AccordionItem class="use-motion opacity-25">
       <AccordionTrigger slot="trigger">Why is Chrome blocking PiP on some sites?</AccordionTrigger>
       <AccordionContent slot="content">
         <ul class="list-disc pl-8">
