@@ -5,11 +5,13 @@ import Layout from '../layouts/layout.astro'
 ---
 
 <Layout>
-  <div class="justify-cente container mx-auto mb-auto mt-36 flex flex-col items-center gap-32">
-    <div class="text-center text-6xl font-bold">Page Not Found</div>
-    <Button
-      class="group flex max-w-fit flex-row flex-nowrap items-center justify-center uppercase"
-      href="/"><Back class="w-8 group-hover:-translate-x-1" />go back</Button
-    >
+  <div class="pt-[calc(100vh-810px)]">
+    <div class="container flex flex-col items-center justify-center gap-32">
+      <div class="pt-20 text-center text-6xl font-bold">Page Not Found</div>
+      <Button
+        class="group flex max-w-fit flex-row flex-nowrap items-center justify-center uppercase"
+        href="/"><Back class="w-8 group-hover:-translate-x-1" />go back</Button
+      >
+    </div>
   </div>
 </Layout>
