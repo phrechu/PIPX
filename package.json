@@ -1,6 +1,6 @@
 {
   "name": "pipx",
-  "description": "Automatic PiP when switching tabs",
+  "description": "Never lose your video again. PIPX automatically keeps your video in a floating window when you switch tabs. The seamless Picture-in-Picture (PiP) you've always wanted.",
   "private": true,
   "version": "0.1.0",
   "type": "module",
