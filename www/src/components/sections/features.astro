@@ -50,13 +50,13 @@ const features = [
         return (
           <div
             class:list={[
-              'use-motion flex w-full flex-col items-center gap-2 opacity-25 md:gap-6 lg:gap-12',
+              'flex w-full flex-col items-center gap-2 md:gap-6 lg:gap-12',
               isRight ? 'md:flex-row-reverse' : 'md:flex-row',
             ]}
           >
             <div
               class:list={[
-                'flex flex-col justify-center py-4 text-left',
+                'use-motion flex flex-col justify-center py-4 text-left opacity-25',
                 isRight ? 'items-start' : 'md:items-end',
               ]}
             >
@@ -68,7 +68,7 @@ const features = [
                 <p class="w-full max-w-[30ch] text-pretty text-xl">{description}</p>
               </div>
             </div>
-            <div class="sm:w-2xl aspect-[16/9] w-full overflow-hidden rounded-lg bg-[var(--light-green)] shadow-2xl shadow-lime-800/50">
+            <div class="sm:w-2xl use-motion aspect-[16/9] w-full overflow-hidden rounded-lg bg-[var(--light-green)] opacity-25 shadow-2xl shadow-lime-800/50">
               <video
                 autoplay
                 muted

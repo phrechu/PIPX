@@ -4,39 +4,41 @@ import Chrome from '@icons/chrome.astro'
 import Feather from '@icons/feather.astro'
 import Gift from '@icons/gift.astro'
 import Happy from '@icons/happy.astro'
+import { GithubURL, ExtensionURL } from '@/consts'
 ---
 
 <section
   id="hero"
-  class="max-w-screen container flex flex-col items-center justify-center gap-4 px-8 pt-48"
+  class="use-motion max-w-screen container flex flex-col items-center justify-center gap-4 px-8 pt-48 opacity-25"
 >
   <h1 class="font-VinaSans text-center text-5xl sm:text-7xl">
     {
       'Take Control of Picture-in-Picture.'
-        .split('')
-        .map(char => <span class="use-motion-text opacity-0">{char}</span>)
+        .split(' ')
+        .map(char => <span class="use-motion-text opacity-0 blur-[var(--blur)]">{char} </span>)
     }
   </h1>
-  <div class="max-w-[45ch] text-center text-xl">
+  <div class="max-w-[60ch] text-center text-lg">
     <p id="a">
       {
-        'never miss a moment.'
-          .split('')
-          .map(char => <span class="use-motion-text opacity-0">{char}</span>)
+        'never miss a moment'
+          .split(' ')
+          .map(char => <span class="use-motion-text opacity-0 blur-[var(--blur)]">{char} </span>)
       }
     </p>
     <p id="b">
       {
-        'built for multitaskers and binge-watchers.'
-          .split('')
-          .map(char => <span class="use-motion-text opacity-0">{char}</span>)
+        'built for multitaskers and binge-watchers'
+          .split(' ')
+          .map(char => <span class="use-motion-text opacity-0 blur-[var(--blur)]">{char} </span>)
       }
     </p>
   </div>
-  <div class="use-motion flex flex-row flex-nowrap items-center gap-4 pt-8 opacity-25">
+  <div class="flex flex-row flex-nowrap items-center gap-4 pt-8">
     <Button
-      href="https://chromewebstore.google.com/detail/nkbikckldmljjiiajklecmgmajgapbfl"
-      class="border-2 border-[var(--lime)]"
+      href={ExtensionURL}
+      id="get-pipx"
+      class="border-2 border-[var(--lime)] text-xl sm:text-2xl"
       isBlank
     >
       <Chrome
@@ -46,12 +48,13 @@ import Happy from '@icons/happy.astro'
     <Button
       variant="link"
       size="lg"
-      class="hover:text-shadow-[0_0_2rem_var(--lime)]"
-      href="https://github.com/phrechu/pipx"
+      class="hover:text-shadow-[0_0_2rem_var(--lime)] text-lg sm:text-xl"
+      href={GithubURL}
+      id="github"
       isBlank>Github</Button
     >
   </div>
-  <div class="use-motion mx-4 mt-8 text-lime-100 opacity-25">
+  <div class="mx-4 mt-8 text-lime-100">
     <ul class="grid w-full max-w-max grid-cols-3 gap-6 text-center text-xs">
       <li class="flex flex-col items-center justify-center gap-1">
         <Gift class="w-5" /><span> Free &<br />open-source</span>
@@ -65,43 +68,48 @@ import Happy from '@icons/happy.astro'
     </ul>
   </div>
   <script>
-    import { animate, inView, stagger } from 'motion'
-    animate(
-      'h1 .use-motion-text',
-      { opacity: 1 },
-      {
-        duration: 1.5,
-        ease: 'easeInOut',
-        delay: stagger(0.01, { startDelay: 0.2 }),
-      }
-    )
-    animate(
-      '#b .use-motion-text',
-      { opacity: 1 },
-      {
-        duration: 1.5,
-        ease: 'easeOut',
-        delay: stagger(0.01, { startDelay: 0.8 }),
-      }
-    )
-    animate(
-      '#a .use-motion-text',
-      { opacity: 1 },
-      {
-        duration: 1.5,
-        ease: 'easeOut',
-        delay: stagger(0.01, { startDelay: 0.6 }),
-      }
-    )
-    inView('h1, p', element => {
+    import { animate, stagger } from 'motion'
+
+    window.CSS.registerProperty({
+      name: '--blur',
+      inherits: false,
+      initialValue: '4px',
+    })
+
+    function initializeMotion() {
       animate(
-        element,
-        { y: [25, 0] },
+        'h1 .use-motion-text',
+        { opacity: 1, '--blur': '0px' },
         {
-          y: { duration: 1.2 },
-          ease: 'easeIn',
+          duration: 1.5,
+          ease: 'easeOut',
+          delay: stagger(0.15, { startDelay: 0 }),
         }
       )
+
+      animate(
+        '#a .use-motion-text',
+        { opacity: 1, '--blur': '0px' },
+        {
+          duration: 1,
+          ease: 'easeOut',
+          delay: stagger(0.1, { startDelay: 0.5 }),
+        }
+      )
+
+      animate(
+        '#b .use-motion-text',
+        { opacity: 1, '--blur': '0px' },
+        {
+          duration: 1,
+          ease: 'easeOut',
+          delay: stagger(0.1, { startDelay: 1 }),
+        }
+      )
+    }
+
+    document.addEventListener('astro:page-load', () => {
+      initializeMotion()
     })
   </script>
 </section>

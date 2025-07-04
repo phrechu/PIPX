@@ -26,25 +26,70 @@ const { ...head } = Astro.props
       import Lenis from 'lenis'
       import 'lenis/dist/lenis.css'
 
-      const lenis = new Lenis({
-        autoRaf: true,
-        anchors: {
-          offset: -100,
-        },
-      })
+      let lenis: Lenis | null = null
+
+      function initializeLenis(): void {
+        if (lenis) {
+          lenis.destroy()
+        }
+
+        lenis = new Lenis({
+          autoRaf: true,
+          anchors: {
+            offset: -200,
+          },
+        })
+
+        setupAnchors()
+      }
+
+      function setupAnchors(): void {
+        document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', (e: Event) => {
+            e.preventDefault()
+            const targetId = anchor.getAttribute('href')?.substring(1)
+
+            if (targetId) {
+              const targetElement = document.getElementById(targetId)
+
+              if (targetElement && lenis) {
+                lenis.scrollTo(targetElement, {
+                  offset: -200,
+                  duration: 1.2,
+                })
+              }
+            }
+          })
+        })
+      }
+
+      function destroyLenis() {
+        if (lenis) {
+          lenis.destroy()
+          lenis = null
+        }
+      }
+
+      document.addEventListener('astro:page-load', initializeLenis)
+      document.addEventListener('astro:before-preparation', destroyLenis)
     </script>
     <script>
       import { animate, inView } from 'motion'
-      inView('.use-motion', element => {
-        animate(
-          element,
-          { opacity: 1, y: [25, 0] },
-          {
-            duration: 1.5,
-            y: { duration: 1.2 },
-            ease: 'easeIn',
-          }
-        )
+      function initializeMotion() {
+        inView('.use-motion', element => {
+          animate(
+            element,
+            { opacity: 1, y: [25, 0] },
+            {
+              duration: 1.5,
+              y: { duration: 1.2 },
+              ease: 'easeIn',
+            }
+          )
+        })
+      }
+      document.addEventListener('astro:page-load', () => {
+        initializeMotion()
       })
     </script>
   </body>
