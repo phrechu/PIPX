@@ -14,8 +14,9 @@ export default defineConfig({
     enabled: false,
   },
 
-
   site: process.env.PUBLIC_SITE_URL || 'http://localhost:4321',
+
+  output: 'static',
 
   integrations: [sitemap()],
 
@@ -24,4 +25,3 @@ export default defineConfig({
   },
 })
 
-console.log('astro', process.env.PUBLIC_SITE_URL);
