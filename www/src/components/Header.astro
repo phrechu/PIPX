@@ -2,17 +2,17 @@
 import Button from '@components/ui/button.astro'
 import Chrome from '@icons/chrome.astro'
 import Logo from 'public/logo.astro'
-import { SiteName } from 'src/consts'
+import { ExtensionURL, GithubURL, SiteName } from 'src/consts'
 ---
 
-<header class="use-motion sticky top-0 z-50 mx-auto opacity-25">
+<header class="sticky top-0 z-50 mx-auto">
   <nav
-    class="border-[var(--lime)]/30 bg-[var(--lime)]/20 mt-2 flex w-full min-w-fit grow flex-row flex-nowrap items-center justify-between rounded-full border-2 px-7 py-4 shadow-lg shadow-lime-900/50 backdrop-blur-md sm:pl-7 sm:pr-6"
+    class="border-[var(--lime)]/30 bg-[var(--lime)]/20 mt-2 flex w-full min-w-fit flex-nowrap justify-between rounded-full border-2 px-7 py-4 shadow-lg shadow-lime-900/50 backdrop-blur-md sm:pl-7 sm:pr-6"
   >
     <a
       href="/"
-      class="mr-0 flex flex-row flex-nowrap items-center gap-2 focus-visible:shadow-[unset] focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-white sm:mr-8"
-      id="site_title"
+      class="mr-0 flex flex-row flex-nowrap items-center gap-2 focus-visible:shadow-[unset] focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-white sm:mr-32"
+      id="site-logo"
     >
       <Logo class="aspect-square w-8" />
       <span class="text-md font-bold">
@@ -24,6 +24,7 @@ import { SiteName } from 'src/consts'
         size="lg"
         variant="link"
         href="#features"
+        id="features-button"
         rounded="none"
         class="hover:text-shadow-[0_0_2rem_var(--lime)] hidden px-0 md:inline-flex">Features</Button
       >
@@ -31,6 +32,7 @@ import { SiteName } from 'src/consts'
         size="lg"
         variant="link"
         href="#faq"
+        id="faq-button"
         rounded="none"
         class="hover:text-shadow-[0_0_2rem_var(--lime)] hidden px-0 md:inline-flex">FAQ</Button
       >
@@ -39,12 +41,13 @@ import { SiteName } from 'src/consts'
         variant="link"
         rounded="none"
         class="hover:text-shadow-[0_0_2rem_var(--lime)] hidden px-0 md:inline-flex"
-        href="https://github.com/phrechu/pipx"
+        href={GithubURL}
+        id="github"
         isBlank>Github</Button
       >
       <Button
-        id="cta"
-        href="https://chromewebstore.google.com/detail/nkbikckldmljjiiajklecmgmajgapbfl"
+        id="get-pipx"
+        href={ExtensionURL}
         isBlank
         class="hidden border-2 border-[var(--lime)] md:inline-flex"
         ><Chrome class="aspect-square w-6 fill-current font-[var(--lime)]" />Get PIPX</Button

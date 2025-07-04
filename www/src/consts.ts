@@ -7,3 +7,6 @@ export const SiteImage = {
   src: `${SiteURL}/pipx-thumbnail.webp`,
   alt: `${SiteDescription}`,
 }
+export const ExtensionURL =
+  'https://chromewebstore.google.com/detail/pipx-better-pip-experienc/nkbikckldmljjiiajklecmgmajgapbfl'
+export const GithubURL = 'https://github.com/phrechu/pipx'
