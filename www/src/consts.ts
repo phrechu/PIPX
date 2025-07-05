@@ -4,7 +4,7 @@ export const SiteTitle = 'Take Control of Picture-in-Picture'
 export const SiteDescription =
   'Take control of Picture-in-Picture with PIPX. Auto-follow videos as you switch tabs, and get seamless PiP on Chromium browsers. Free & open source.'
 export const SiteImage = {
-  src: `${SiteURL}/pipx-thumbnail.webp`,
+  src: `${SiteURL}/media/pipx-thumbnail.webp`,
   alt: `${SiteDescription}`,
 }
 export const ExtensionURL =

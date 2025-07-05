@@ -23,6 +23,7 @@ const { ...head } = Astro.props
     <Footer />
     <Noise />
     <script>
+      // lenis
       import Lenis from 'lenis'
       import 'lenis/dist/lenis.css'
 
@@ -72,9 +73,10 @@ const { ...head } = Astro.props
 
       document.addEventListener('astro:page-load', initializeLenis)
       document.addEventListener('astro:before-preparation', destroyLenis)
-    </script>
-    <script>
+
+      // motion
       import { animate, inView } from 'motion'
+
       function initializeMotion() {
         inView('.use-motion', element => {
           animate(
