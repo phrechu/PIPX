@@ -15,6 +15,6 @@
 
 @font-face {
   font-family: 'Vina Sans';
-  src: url('/assets/fonts/VinaSans-Regular.woff2') format('woff2');
+  src: url('/assets/fonts/VinaSans-Regular.ttf') format('ttf');
   font-display: swap;
 }
