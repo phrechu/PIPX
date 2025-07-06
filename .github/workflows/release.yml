@@ -21,7 +21,7 @@ jobs:
 
       - name: Zip extension
         run: |
-          pnpm zip
+          pnpm wxt zip
 
       - name: Submit to Chrome Web Store
         run: |
