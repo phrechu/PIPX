@@ -16,7 +16,7 @@ export function showNotification(
     color:#32477e;
     font-weight: bold;
   `
-  learnMore.setAttribute('href', 'https://pipx.netlify.app')
+  learnMore.setAttribute('href', 'https://pipx.netlify.app/#faq')
   learnMore.setAttribute('target', '_blank')
   learnMore.textContent = 'learn why'
 

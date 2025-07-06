@@ -13,8 +13,9 @@ import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
     <AccordionItem class="use-motion opacity-25">
       <AccordionTrigger slot="trigger">Can I use my own keyboard shortcut?</AccordionTrigger>
       <AccordionContent slot="content">
-        Just head to <span class="font-semibold">chrome://extensions/shortcuts</span> to set your own
-        key combo.
+        Just head to <span class="rounded-sm bg-[var(--dark-green)] px-2 py-1 text-sm font-semibold"
+          >chrome://extensions/shortcuts</span
+        > to set your own key combo.
       </AccordionContent>
     </AccordionItem>
     <AccordionItem class="use-motion opacity-25">
@@ -54,6 +55,28 @@ import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
             anywhere on the site.
           </li>
         </ul>
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem class="use-motion opacity-25">
+      <AccordionTrigger slot="trigger"
+        >How to activate the auto Picture-in-Picture permission?</AccordionTrigger
+      >
+      <AccordionContent slot="content">
+        <span>
+          A few things to double-check
+          <ul class="list-disc pl-8">
+            <li>Are you using Chrome 134 or above?</li>
+            <li>
+              Have you enabled the auto PiP flag? <br />If not, just head to <span
+                class="rounded-sm bg-[var(--dark-green)] px-2 py-1 text-sm font-semibold"
+                >about://flags/#auto-picture-in-picture-for-video-playback</span
+              >
+              and enable it.
+            </li>
+            <li>Have you enabled the auto PiP permission in site settings?</li>
+          </ul>
+          <img class="mt-4 rounded-lg" src="./media/permissions.webp" alt="" />
+        </span>
       </AccordionContent>
     </AccordionItem>
   </Accordion>
