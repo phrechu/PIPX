@@ -69,12 +69,10 @@ This notification is shown when entering PiP mode encountered an error, check yo
 - [x] `v0.1.0`
   - Feat: Add video detection for nested browsing contexts (e.g iframe elements / reddit player).
   - Docs: Add limitations section to README.
-- [ ] `v0.2.0`
   - Feat: Automate Publishing new versions.
-- [ ] `v0.3.0`
+- [x] `v1.0.0`
   - Feat: Improve the notifications UI and messages.
-- [ ] `v1.0.0`
-  - Release: Mark core functionality as stable and address known limitations.
+  - Release: Automatic Picture-in-Picture when switching tabs is stable
 
 ## Development
 

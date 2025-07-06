@@ -1,135 +1,85 @@
-import { getVideoId } from "../utils/getVideoId";
-import { enablePiP } from "../utils/enablePiP";
-import { showNotification } from "../utils/showNotification";
-import { querySelectorAll } from "kagekiri";
+import { isPermitted, requestMediaSession } from '@/utils/mediaSession'
+import { querySelectorAll } from 'kagekiri'
+import { getVideoId } from '../utils/getVideoId'
+import { showNotification } from '../utils/showNotification'
 
 export default defineContentScript({
-  matches: ["<all_urls>"],
+  matches: ['<all_urls>'],
   main() {
-    let notificationsEnabled = true;
+    let notificationsEnabled = true
 
-    // Load initial preference
-    async function loadUserPref(): Promise<void> {
-      const result = await browser.storage.sync.get("enableNotifications");
-      notificationsEnabled = (result.enableNotifications as boolean) ?? true;
+    async function loadUserPref() {
+      const result = await browser.storage.sync.get('enableNotifications')
+      notificationsEnabled = (result.enableNotifications as boolean) ?? true
     }
 
-    // Listen for storage changes
-    browser.storage.onChanged.addListener((changes) => {
+    browser.storage.onChanged.addListener(changes => {
       if (changes.enableNotifications) {
-        notificationsEnabled = changes.enableNotifications.newValue as boolean;
+        notificationsEnabled = changes.enableNotifications.newValue as boolean
       }
-    });
+    })
 
-    // Load initial preference
-    loadUserPref();
-
-    // Handle messages from background script
     browser.runtime.onMessage.addListener(() => {
-      togglePiP();
-    });
+      togglePiP()
+    })
 
-    // Handle visibility changes for auto PiP
-    document.addEventListener("visibilitychange", async () => {
+    document.addEventListener('visibilitychange', async () => {
       // @ts-ignore
-      const videoList = querySelectorAll(
-        "video"
-      ) as NodeListOf<HTMLVideoElement>;
-      const videoId = getVideoId(videoList);
-      loadUserPref();
+      const videoList = querySelectorAll('video') as NodeListOf<HTMLVideoElement>
+      const videoId = getVideoId(videoList)
+      await loadUserPref()
+      if (videoId !== undefined) {
+        const video = videoList[videoId]
+        requestMediaSession(video)
 
-      if (document.visibilityState === "visible") {
-        if (document.pictureInPictureElement) {
-          try {
-            await document.exitPictureInPicture();
-            showNotification("Exited PiP mode", "exitPiP", false);
-          } catch (error) {
-            console.error("Failed to exit PiP:", error);
-            showNotification(
-              "Failed to exit PiP mode",
-              "error",
-              notificationsEnabled
-            );
-          }
-        }
-      } else {
-        if (videoId !== undefined && !videoList[videoId].paused) {
-          try {
-            if (videoList[videoId].disablePictureInPicture) {
-              enablePiP(videoList, videoId);
+        if (document.visibilityState === 'visible') {
+          await document.exitPictureInPicture()
+        } else {
+          if (!video.paused) {
+            try {
+              if (navigator.userActivation.isActive && !(await isPermitted(video))) {
+                await video.requestPictureInPicture()
+              } else if (!navigator.userActivation.isActive && !(await isPermitted(video))) {
+                showNotification('User Interaction Required', 'warning', notificationsEnabled)
+              } else {
+                requestMediaSession(video)
+              }
+            } catch (error) {
+              console.error('Failed to enter PiP:', error)
+              showNotification('Failed to enter PiP mode', 'error', notificationsEnabled)
             }
-
-            if (navigator.userActivation.isActive) {
-              await videoList[videoId].requestPictureInPicture();
-              showNotification("Entered PiP mode", "enterPiP", false);
-            } else {
-              showNotification(
-                "PiP requires user interaction",
-                "warning",
-                notificationsEnabled
-              );
-            }
-          } catch (error) {
-            console.error("Failed to enter PiP:", error);
-            showNotification(
-              "Failed to enter PiP mode",
-              "error",
-              notificationsEnabled
-            );
           }
         }
       }
-    });
+    })
 
     async function togglePiP(): Promise<void> {
-      loadUserPref();
+      await loadUserPref()
       // @ts-ignore
-      const videoList = querySelectorAll(
-        "video"
-      ) as NodeListOf<HTMLVideoElement>;
-      const videoId = getVideoId(videoList);
+      const videoList = querySelectorAll('video') as NodeListOf<HTMLVideoElement>
+      const videoId = getVideoId(videoList)
 
-      if (document.pictureInPictureElement) {
-        try {
-          await document.exitPictureInPicture();
-          showNotification("Exited PiP mode", "exitPiP", notificationsEnabled);
-        } catch (error) {
-          console.error("Failed to exit PiP:", error);
-          showNotification(
-            "Failed to exit PiP mode",
-            "error",
-            notificationsEnabled
-          );
-        }
-      } else {
-        if (videoId !== undefined && !videoList[videoId].paused) {
+      if (videoId !== undefined) {
+        const video = videoList[videoId]
+        if (document.pictureInPictureElement) {
           try {
-            if (videoList[videoId].disablePictureInPicture) {
-              enablePiP(videoList, videoId);
-            }
+            await document.exitPictureInPicture()
 
-            await videoList[videoId].requestPictureInPicture();
-            showNotification(
-              "Entered PiP mode",
-              "enterPiP",
-              notificationsEnabled
-            );
+            showNotification('Exited PiP mode', 'exitPiP', notificationsEnabled)
           } catch (error) {
-            console.error("Failed to enter PiP:", error);
-            showNotification(
-              "Failed to enter PiP mode",
-              "error",
-              notificationsEnabled
-            );
+            console.error('Failed to exit PiP:', error)
+            showNotification('Failed to exit PiP mode', 'error', notificationsEnabled)
           }
         } else {
-          showNotification(
-            "Can not enter PiP mode",
-            "warning",
-            notificationsEnabled
-          );
+          try {
+            await video.requestPictureInPicture()
+            showNotification('Entered PiP mode', 'enterPiP', notificationsEnabled)
+          } catch (error) {
+            console.error('Failed to enter PiP:', error)
+            showNotification('Failed to enter PiP mode', 'error', notificationsEnabled)
+          }
         }
       }
     }
   },
-});
+})

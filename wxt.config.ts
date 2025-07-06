@@ -3,7 +3,7 @@ import { defineConfig } from 'wxt'
 // See https://wxt.dev/api/config.html
 export default defineConfig({
   manifest: {
-    name: 'PIPX - Take Control of Picture-in-Picture',
+    name: 'PIPX - Take Control of Picture-in-Picture, Automatically',
     permissions: ['storage', 'contextMenus'],
     action: {
       default_icon: {
@@ -27,4 +27,5 @@ export default defineConfig({
   },
   manifestVersion: 3,
   srcDir: 'src',
+  outDir: '.output',
 })
