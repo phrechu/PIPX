@@ -21,8 +21,12 @@ function isPermitted(video: HTMLVideoElement): Promise<boolean> {
   })
 }
 
-function hasPictureInPictureVideo(): boolean {
-  return document.pictureInPictureElement !== null
+function hasPictureInPictureVideo(): Promise<boolean> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(document.pictureInPictureElement !== null)
+    }, 100)
+  })
 }
 
 export { hasPictureInPictureVideo, isPermitted, requestMediaSession }

@@ -39,7 +39,11 @@ export default defineContentScript({
             try {
               if (navigator.userActivation.isActive && !(await isPermitted(video))) {
                 await video.requestPictureInPicture()
-              } else if (!navigator.userActivation.isActive && !(await isPermitted(video))) {
+              } else if (
+                !navigator.userActivation.isActive &&
+                !(await isPermitted(video)) &&
+                !(await hasPictureInPictureVideo())
+              ) {
                 showNotification('User Interaction Required', 'warning', notificationsEnabled)
               } else {
                 requestMediaSession(video)
@@ -50,6 +54,8 @@ export default defineContentScript({
             }
           }
         }
+      } else {
+        showNotification("Can't detect the video", 'warning', notificationsEnabled)
       }
     })
 
