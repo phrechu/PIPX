@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@import '@fontsource/vina-sans';
+@import '@fontsource-variable/inter';
 
 * {
   --lime: oklch(0.95 0.18 119.26);
@@ -9,12 +11,10 @@
   --dark: oklch(0.2 0 264.47);
 }
 
-@theme {
-  --font-VinaSans: 'Vina Sans', sans-serif;
+body {
+  font-family: 'Inter Variable', sans-serif;
 }
 
-@font-face {
-  font-family: 'Vina Sans';
-  src: url('/assets/fonts/VinaSans-Regular.ttf') format('ttf');
-  font-display: swap;
+@theme {
+  --font-VinaSans: 'Vina Sans', sans-serif;
 }

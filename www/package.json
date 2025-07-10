@@ -3,15 +3,18 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev --host",
+    "dev": "astro dev --host --port 3000",
     "build": "astro check && astro build",
-    "preview": "astro preview --port 3000",
+    "preview": "astro preview --port 3001",
     "astro": "astro",
     "format": "prettier . --write"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.4.1",
+    "@fontsource-variable/inter": "^5.2.6",
+    "@fontsource/vina-sans": "^5.2.6",
+    "@playform/compress": "^0.2.0",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.10.2",
     "class-variance-authority": "^0.7.1",

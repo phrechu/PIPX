@@ -1,4 +1,6 @@
 ---
+import faviconPng from '@/assets/favicon-48.png?url'
+import faviconSvg from '@/assets/favicon.svg?url'
 import { ClientRouter } from 'astro:transitions'
 import { SiteDescription, SiteImage, SiteName, SiteTitle, SiteURL } from '../consts'
 import SEO, { type Props as SEOProps } from './SEO.astro'
@@ -17,7 +19,8 @@ const {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
+<link rel="icon" type="image/svg+xml" href={faviconSvg} />
+<link rel="icon" type="image/png" href={faviconPng} />
+<link rel="icon" sizes="32x32" href="/favicon.ico" />
 <SEO {canonicalURL} {title} {description} {name} {image} {...seo} />
-<link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" href="/favicon.ico" />
 <ClientRouter />

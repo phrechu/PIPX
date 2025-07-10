@@ -62,6 +62,10 @@ function normalizeImageUrl(image: string | ImageMetadata) {
 <meta name="description" content={description} />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <title>{name} - {title}</title>
+<meta
+  name="keywords"
+  content="chrome picture-in-picture, pip extension, pipx, auto pip, video extension, chrome tab pip"
+/>
 
 <!-- google search console meta tag -->
 <meta name="google-site-verification" content="x_Kavn5W6kD7PA4EIX8UcPvwm6bCfnGVMOS0mEMBFPE" />
@@ -84,55 +88,11 @@ function normalizeImageUrl(image: string | ImageMetadata) {
 {twitter.image && <meta name="twitter:image" content={normalizeImageUrl(twitter.image.src)} />}
 {twitter.image && <meta name="twitter:image:alt" content={twitter.image.alt} />}
 
-<!-- faq -->
+<!-- Structured data -->
+<script type="application/ld+json" is:inline>
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"PIPX","operatingSystem":"Chrome OS, Windows, macOS, Linux","applicationCategory":"BrowserExtension","browserRequirements":"Requires Google Chrome","description":"Automatically activates Picture-in-Picture when you switch tabs. Works with all video players and uses MediaSession if available.","url":"https://pipx.netlify.app/","image":"https://pipx.netlify.app/media/pipx-thumbnail.webp","sameAs":["https://chromewebstore.google.com/detail/pipx/nkbikckldmljjiiajklecmgmajgapbfl","https://github.com/phrechu/pipx"]}
+</script>
 
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "PIPX",
-    "url": "https://pipx.netlify.app/",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Can I use my own keyboard shortcut?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Just head to chrome://extensions/shortcuts to set your own key combo."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I turn off the notifications?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Right-click the PIPX icon (make sure it’s pinned), then uncheck 'Show/Hide Notifications'."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use PIPX on other browsers?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "PIPX is built for Chromium browsers. Some browsers already handle tab-switching PiP natively. In those cases, just use the built-in version for best results."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why isn't PIPX working?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A few things to double-check: 1) Did you reload the page after installing the extension? 2) Is the video playing (not paused or muted)? 3) Is there only one video playing at once? 4) Are Chrome’s security policies blocking PiP?"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why is Chrome blocking PiP on some sites?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Chrome blocks PiP for embedded videos from different origins due to security restrictions. Tab-switching PiP may also require you to click once on the page to activate it."
-        }
-      }
-    ]
-  }
+<script type="application/ld+json" is:inline>
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I use my own keyboard shortcut?","acceptedAnswer":{"@type":"Answer","text":"Just head to chrome://extensions/shortcuts to set your own key combo."}},{"@type":"Question","name":"How do I turn off the notifications?","acceptedAnswer":{"@type":"Answer","text":"Right-click the PIPX icon (make sure it’s pinned), then uncheck 'Show/Hide Notifications'."}},{"@type":"Question","name":"Can I use PIPX on other browsers?","acceptedAnswer":{"@type":"Answer","text":"PIPX is built for Chromium browsers. Some browsers already handle tab-switching PiP natively. In those cases, just use the built-in version for best results."}},{"@type":"Question","name":"Why isn't PIPX working?","acceptedAnswer":{"@type":"Answer","text":"A few things to double-check: 1) Did you reload the page after installing the extension? 2) Is the video playing (not paused or muted)? 3) Is there only one video playing at once? 4) Are Chrome’s security policies blocking PiP?"}},{"@type":"Question","name":"Why is Chrome blocking PiP on some sites?","acceptedAnswer":{"@type":"Answer","text":"Chrome blocks PiP for embedded videos from different origins due to security restrictions. Tab-switching PiP may also require you to click once on the page to activate it."}},{"@type":"Question","name":"Why is Chrome blocking PiP?","acceptedAnswer":{"@type":"Answer","text":"Chrome blocks PiP for embedded videos from different origins due to security restrictions. Tab-switching PiP may also require you to click once on the page to activate it."}},{"@type":"Question","name":"How to activate the auto Picture-in-Picture permission?","acceptedAnswer":{"@type":"Answer","text":"A few things to double-check: 1) Are you using Chrome 134 or above? 2) Have you enabled the auto PiP flag? 3) If not, just head to about://flags/#auto-picture-in-picture-for-video-playback and enable it. 4) Have you enabled the auto PiP permission in site settings?"}},{"@type":"Question","name":"How to enable the auto PiP permission in site settings?","acceptedAnswer":{"@type":"Answer","text":"Auto Picture-in-Picture must be enabled individually for each website you visit - such as YouTube, Reddit, Facebook, Twitter (X), Twitch, Kick, Netflix, Udemy, Vimeo, and others. This gives you full control over where PIPX activates automatically. If you don’t see the 'Auto Picture-in-Picture' option right away, open the site’s Permissions in your browser settings. From there, you can view and manage all available permissions, including Auto PiP."}}]}
 </script>

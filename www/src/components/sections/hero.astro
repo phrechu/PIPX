@@ -9,7 +9,7 @@ import { GithubURL, ExtensionURL } from '@/consts'
 
 <section
   id="hero"
-  class="use-motion max-w-screen container flex flex-col items-center justify-center gap-4 px-8 pt-48 opacity-25"
+  class="use-motion max-w-screen container flex flex-col items-center justify-center gap-4 px-8 pt-48"
 >
   <h1 class="font-VinaSans text-center text-5xl sm:text-7xl">
     {
@@ -38,17 +38,17 @@ import { GithubURL, ExtensionURL } from '@/consts'
     <Button
       href={ExtensionURL}
       id="get-pipx"
-      class="border-2 border-[var(--lime)] text-xl sm:text-2xl"
+      class="border-1 border-[var(--lime)] text-xl sm:text-2xl"
       isBlank
     >
       <Chrome
-        class="hover:text-shadow-[0_0_1.5rem_hsla(0,0%,100%,.5)] aspect-square w-6 fill-current font-[var(--lime)]"
+        class="hover:text-shadow-[0_0_1.5rem_hsla(0,0%,100%,.5)] aspect-square w-8 fill-current font-[var(--lime)]"
       />Get PIPX</Button
     >
     <Button
       variant="link"
       size="lg"
-      class="hover:text-shadow-[0_0_2rem_var(--lime)] text-lg sm:text-xl"
+      class="hover:text-shadow-[0_0_2rem_var(--lime)] px-2 text-lg sm:px-8 sm:text-xl"
       href={GithubURL}
       id="github"
       isBlank>Github</Button

@@ -6,11 +6,11 @@ import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
 ---
 
 <section id="faq" class="container mx-auto flex flex-col items-center">
-  <h2 class="use-motion pb-2 text-center text-sm font-bold uppercase tracking-wider opacity-25">
+  <h2 class="use-motion pb-2 text-center text-sm font-bold uppercase tracking-wider">
     frequently asked questions
   </h2>
   <Accordion class="w-full max-w-3xl p-4 pt-4">
-    <AccordionItem class="use-motion opacity-25">
+    <AccordionItem class="use-motion">
       <AccordionTrigger slot="trigger">Can I use my own keyboard shortcut?</AccordionTrigger>
       <AccordionContent slot="content">
         Just head to <span class="rounded-sm bg-[var(--dark-green)] px-2 py-1 text-sm font-semibold"
@@ -18,20 +18,20 @@ import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
         > to set your own key combo.
       </AccordionContent>
     </AccordionItem>
-    <AccordionItem class="use-motion opacity-25">
+    <AccordionItem class="use-motion">
       <AccordionTrigger slot="trigger">How do I turn off the notifications?</AccordionTrigger>
       <AccordionContent slot="content"
         >Right-click the PIPX icon (make sure it’s pinned), then uncheck “Show/Hide Notifications”.</AccordionContent
       >
     </AccordionItem>
-    <AccordionItem class="use-motion opacity-25">
+    <AccordionItem class="use-motion">
       <AccordionTrigger slot="trigger">Can I use PIPX on other browsers?</AccordionTrigger>
       <AccordionContent slot="content"
         >PIPX is built for Chromium browsers.<br />Some browser already handle tab-switching PiP
         natively. in those cases, just use the built-in version for best results.</AccordionContent
       >
     </AccordionItem>
-    <AccordionItem class="use-motion opacity-25">
+    <AccordionItem class="use-motion">
       <AccordionTrigger slot="trigger">Why isn't PIPX working?</AccordionTrigger>
       <AccordionContent slot="content">
         <span>
@@ -45,8 +45,8 @@ import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
         </span>
       </AccordionContent>
     </AccordionItem>
-    <AccordionItem class="use-motion opacity-25">
-      <AccordionTrigger slot="trigger">Why is Chrome blocking PiP on some sites?</AccordionTrigger>
+    <AccordionItem class="use-motion">
+      <AccordionTrigger slot="trigger">Why is Chrome blocking PiP?</AccordionTrigger>
       <AccordionContent slot="content">
         <ul class="list-disc pl-8">
           <li>Chrome blocks PiP for embedded videos from different origins (a security thing).</li>
@@ -55,9 +55,10 @@ import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
             anywhere on the site.
           </li>
         </ul>
+        Activating the auto Picture-in-Picture permission in recommended.
       </AccordionContent>
     </AccordionItem>
-    <AccordionItem class="use-motion opacity-25">
+    <AccordionItem class="use-motion">
       <AccordionTrigger slot="trigger"
         >How to activate the auto Picture-in-Picture permission?</AccordionTrigger
       >
@@ -75,8 +76,31 @@ import AccordionTrigger from '@components/ui/accordion/AccordionTrigger.astro'
             </li>
             <li>Have you enabled the auto PiP permission in site settings?</li>
           </ul>
-          <img class="mt-4 rounded-lg" src="./media/permissions.webp" alt="" />
         </span>
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem class="use-motion">
+      <AccordionTrigger slot="trigger"
+        >How to enable the auto PiP permission in site settings?</AccordionTrigger
+      >
+      <AccordionContent slot="content">
+        <div>
+          <p class="pr-4">
+            Auto Picture-in-Picture must be enabled individually for each website you visit - such
+            as YouTube, Reddit, Facebook, Twitter (X), Twitch, Kick, Netflix, Udemy, Vimeo, and
+            others.
+            <br />
+            This gives you full control over where PIPX activates automatically. If you don’t see the
+            “Auto Picture-in-Picture” option right away, open the site’s Permissions in your browser
+            settings. From there, you can view and manage all available permissions, including Auto PiP.
+          </p>
+
+          <img
+            class="mt-4 rounded-lg"
+            src="./media/permissions.webp"
+            alt="enabling auto Picture in Picture permission in site settings"
+          />
+        </div>
       </AccordionContent>
     </AccordionItem>
   </Accordion>

@@ -8,6 +8,9 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 
+import playformCompress from '@playform/compress';
+
+
 // https://astro.build/config
 export default defineConfig({
   devToolbar: {
@@ -18,10 +21,9 @@ export default defineConfig({
 
   output: 'static',
 
-  integrations: [sitemap()],
+  integrations: [sitemap(), playformCompress({ CSS: false, HTML: true, Image: false, JavaScript: false, SVG: true, })],
 
   vite: {
     plugins: [tailwindcss()],
   },
 })
-
