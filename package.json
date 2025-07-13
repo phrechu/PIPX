@@ -1,27 +1,21 @@
 {
   "name": "pipx",
-  "description": "Never lose your video again, Automatic Picture-in-Picture (PiP) mode when you switch tabs.",
   "private": true,
-  "version": "1.0.1",
-  "type": "module",
   "scripts": {
-    "dev": "wxt",
-    "build": "wxt build",
-    "zip": "wxt zip",
-    "compile": "tsc --noEmit",
-    "postinstall": "wxt prepare",
-    "clean": "rm -rf node_modules .output pnpm-lock.yaml .wxt"
+    "dev": "turbo run dev",
+    "dev:web": "turbo run pipx-web#dev",
+    "dev:ext": "turbo run pipx-ext#dev",
+    "build": "turbo run build",
+    "format": "prettier --write \"**/*.{ts,tsx,md,astro}\"",
+    "clean": "turbo run clean && rm -rf node_modules .turbo pnpm-lock.yaml",
+    "check": "turbo run check-types"
   },
   "devDependencies": {
-    "@types/chrome": "^0.1.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14",
-    "typescript": "^5.8.3",
-    "wxt": "^0.20.7"
-  },
-  "dependencies": {
-    "kagekiri": "^2.0.0"
+    "turbo": "^2.5.4",
+    "typescript": "^5.8.3"
   },
   "packageManager": "pnpm@10.13.1"
 }

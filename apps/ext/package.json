@@ -1,0 +1,26 @@
+{
+  "name": "pipx-ext",
+  "description": "Never lose your video again, Automatic Picture-in-Picture (PiP) mode when you switch tabs.",
+  "private": true,
+  "version": "1.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "zip": "wxt zip",
+    "compile": "tsc --noEmit",
+    "postinstall": "wxt prepare",
+    "clean": "rm -rf node_modules .output pnpm-lock.yaml .wxt .turbo"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "typescript": "^5.8.3",
+    "wxt": "^0.20.7"
+  },
+  "dependencies": {
+    "kagekiri": "^2.0.0"
+  }
+}

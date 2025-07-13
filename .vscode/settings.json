@@ -1,4 +1,14 @@
 {
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.organizeImports": "always"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.astro": "astro"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
   "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -23,8 +33,4 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "files.associations": {
-    "*.css": "tailwindcss",
-    "*.astro": "astro"
-  }
 }

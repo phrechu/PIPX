@@ -7,19 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# dependencies
 node_modules
-.output
-stats.html
-stats-*.json
-.wxt
-web-ext.config.ts
-todo
-.env
-.env.*
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
@@ -30,3 +21,25 @@ todo
 
 # Local Netlify folder
 .netlify
+
+# build output
+dist
+.output
+build
+
+# generated types
+.astro
+.wxt
+.turbo
+
+# environment variables
+.env
+.env.*
+
+# specific to wxt
+stats.html
+stats-*.json
+web-ext.config.ts
+
+# extra
+todo
