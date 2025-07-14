@@ -1,4 +1,3 @@
-import { isPermitted, requestMediaSession } from '@/utils/mediaSession'
 import { querySelectorAll } from 'kagekiri'
 import { getVideoId } from '../utils/getVideoId'
 import { showNotification } from '../utils/showNotification'
@@ -8,14 +7,14 @@ export default defineContentScript({
   main() {
     let notificationsEnabled = true
 
-    async function loadUserPref() {
-      const result = await browser.storage.sync.get('enableNotifications')
-      notificationsEnabled = (result.enableNotifications as boolean) ?? true
+    const loadUserPref = async () => {
+      const { enableNotifications } = await browser.storage.sync.get('enableNotifications')
+      notificationsEnabled = enableNotifications ?? true
     }
 
     browser.storage.onChanged.addListener(changes => {
       if (changes.enableNotifications) {
-        notificationsEnabled = changes.enableNotifications.newValue as boolean
+        notificationsEnabled = changes.enableNotifications.newValue ?? true
       }
     })
 
@@ -23,68 +22,79 @@ export default defineContentScript({
       togglePiP()
     })
 
+    type TriggerSource = 'mediaSession' | 'userActivation' | undefined
+    let triggerSource: TriggerSource = 'userActivation'
+
     document.addEventListener('visibilitychange', async () => {
       // @ts-ignore
       const videoList = querySelectorAll('video') as NodeListOf<HTMLVideoElement>
       const videoId = getVideoId(videoList)
       await loadUserPref()
-      if (videoId !== undefined) {
-        const video = videoList[videoId]
-        requestMediaSession(video)
 
-        if (document.visibilityState === 'visible') {
-          await document.exitPictureInPicture()
-        } else {
-          if (!video.paused) {
-            try {
-              if (navigator.userActivation.isActive && !(await isPermitted(video))) {
-                await video.requestPictureInPicture()
-              } else if (
-                !navigator.userActivation.isActive &&
-                !(await isPermitted(video)) &&
-                !(await hasPictureInPictureVideo())
-              ) {
-                showNotification('User Interaction Required', 'warning', notificationsEnabled)
-              } else {
-                requestMediaSession(video)
-              }
-            } catch (error) {
-              console.error('Failed to enter PiP:', error)
-              showNotification('Failed to enter PiP mode', 'error', notificationsEnabled)
-            }
-          }
+      if (videoId === undefined) return
+
+      const video = videoList[videoId]
+      const pipActive = !!document.pictureInPictureElement
+      const userInteracted = navigator.userActivation?.isActive
+      const isReturning = document.visibilityState === 'visible'
+      const isLeaving = document.visibilityState === 'hidden'
+
+      if (triggerSource !== 'mediaSession' && 'mediaSession' in navigator) {
+        try {
+          // @ts-ignore
+          navigator.mediaSession.setActionHandler('enterpictureinpicture', async () => {
+            await video.requestPictureInPicture()
+            triggerSource = 'mediaSession'
+          })
+        } catch (err) {
+          console.warn('PIPX:', err)
         }
-      } else {
-        showNotification("Can't detect the video", 'warning', notificationsEnabled)
+      }
+
+      if (isReturning && !video.paused) {
+        if (triggerSource === 'mediaSession') {
+          triggerSource = 'userActivation'
+        }
+
+        if (pipActive) {
+          await document.exitPictureInPicture()
+        }
+
+        if (!userInteracted && !pipActive && triggerSource === undefined) {
+          showNotification('User Interaction Required', 'warning', notificationsEnabled)
+        }
+
+        if (triggerSource === 'userActivation') {
+          triggerSource = undefined
+        }
+
+        return
+      }
+
+      if (isLeaving && !video.paused) {
+        if (userInteracted && !pipActive) {
+          await video.requestPictureInPicture()
+          triggerSource = 'userActivation'
+        }
       }
     })
 
-    async function togglePiP(): Promise<void> {
+    const togglePiP = async (): Promise<void> => {
       await loadUserPref()
       // @ts-ignore
       const videoList = querySelectorAll('video') as NodeListOf<HTMLVideoElement>
       const videoId = getVideoId(videoList)
 
-      if (videoId !== undefined) {
-        const video = videoList[videoId]
-        if (document.pictureInPictureElement) {
-          try {
-            await document.exitPictureInPicture()
+      if (videoId === undefined) return
 
-            showNotification('Exited PiP mode', 'exitPiP', notificationsEnabled)
-          } catch (error) {
-            console.error('Failed to exit PiP:', error)
-            showNotification('Failed to exit PiP mode', 'error', notificationsEnabled)
-          }
-        } else {
-          try {
-            await video.requestPictureInPicture()
-            showNotification('Entered PiP mode', 'enterPiP', notificationsEnabled)
-          } catch (error) {
-            console.error('Failed to enter PiP:', error)
-            showNotification('Failed to enter PiP mode', 'error', notificationsEnabled)
-          }
-        }
+      const video = videoList[videoId]
+
+      if (document.pictureInPictureElement) {
+        await document.exitPictureInPicture()
+        showNotification('Exited PiP mode', 'exitPiP', notificationsEnabled)
+      } else {
+        await video.requestPictureInPicture()
+        showNotification('Entered PiP mode', 'enterPiP', notificationsEnabled)
       }
     }
   },
